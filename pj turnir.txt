@@ -1,0 +1,75 @@
+Turnir – naziv, vrsta (enum – Masters, GrandSlam, Drugi), godina
+RezultatNaTurniru – turnir(tipa Turnir), broj osvojenih poena
+Osoba – ime (u obliku – Ime Prezime (skraćenica od zemlje) npr Novak Đoković (Srb)), datum rodjenja
+Teniser nasleđuje Osobu – rang, lista rezultata(tipa RezultatNaTurniru)
+Konzolna:
+ATP_lista – lista tenisera(tip Teniser), naziv, godina
+
+Bile su dve grupe po 10ak metoda (prve su vezane za Tenisera, druge za ATP_Listu)
+Otprilike kako se secam:
+Napravi Biblioteku 
+-Turnir(naziv, maxOstvariviBrPoena,vrsta) vrsta je enum {GrandSlam, Masters, Drugi}
+-RezultatTurnira(ostvareniBrojPoena, turnir(tipa Turnir))
+-Osoba (ime, godinaRodjenja), ime je string formata "Ime Prezime (PrvaTriSlovaDrzave)"
+-Teniser (spisakRezultataTurnira), nasledjuje Osobu
+Napravi konzolnu
+-ATP_Lista (spisakTenisera, godina)
+
+DODAJ EDITOVANJE GETERA I SETERA
+
+1. Zadatak onaj sa ATP listom i onda tipa izbaci broj tenisera sa max brojem poena, 
+2. izbaci ime poslednje rangiranog, 
+3. izbaci listu tunira(tenisera) iz iste zemlje, 
+4. da li je teniser pobedio na turniru, a pobedio je ako ima max poena i to su npr. 4 metode po 5 poena
+
+Metode: U klasi teniser
+1. Da li je dati teniser pobedio na odredjenom turniru (ostvareniBrojPoena==maxBrojPoena), i koja je vrsta tog turnira. (I koje je godine osvojio)
+2. Vrati broj turnira na kojima je dati teniser osvojio vise od pola maxBrojaPoena.
+3. Nazivi turnira na kojima je dati teniser igrao tokom 2016. godine
+4. Prosecan broj osvojenih poena datog tenisera na odredjenoj vrsti turnira.
+param: vrstaTurnira
+return: double
+postupak: prolazim kroz rezultate, sabiram sve ostvarene poene i brojim ih (imamo int suma i int broj)
+5. Koliko je procenat znacajnih turnira u ukupnom broju turnira na kojima je igrao (masters ili grandslam)
+param: nema
+return: double
+postupak: prolazimo kroz rezultate, brojimo turnire samo ako su master ili grandslam. podelimo sa lista.Count
+6. Vrati turnire koje je teniser osvojio u 2016. godini.
+7. Za datog tenisera vratis broj poena koji je mogao da osvoji da je osvojio (pobedio, imao max) sve turnire na kojima je ucestvovao...
+8. Da li je dati teniser vrhunski (osvojio bar 2 znacajna turnira).
+9. Da li je dati teniser iz odredjene zemlje?
+10. Da li je dati teniser igrao na svim turnirima iz skupa turnira? (naziv turnira slican) **ODRADI OVO???***
+
+1a. Vrati prosecan broj poena datog tenisera na svim turnirima koje je igrao.
+1b. Procenat osvojenih turnira datog tenisera.
+
+ATPLista:
+1.Imena tenisera, i broj turnira koje su odigrali za prvih 5 najbolje rangiranih tenisera
+2. Broj tenisera iz odredjene zemlje
+3. Ime tenisera koji je poslednji na rang listi
+4. Svi teniseri iz srbije koji su igrali na bar jednom GrandSlam turniru
+5. Za dva odredjene tenisera, dati nazive turnira na kojima je prvi teniser igrao (a drugi pobedio) **
+6. Imena tenisera koji su pobedili na nekom od turnira iz odredjenog skupa turnira
+7. Teniseri koji su mladji od odredjenog broja godina, koji su igrali vise od 10 turnira
+8. Da li je prvorangirani teniser pobedio na svim GrandSlam turnirima na kojima je ucestvovao**
+9. Svi teniseri koji su igrali na samo jednoj vrsti turnira
+10a. Vrati tenisera koji je osvojio bar dva znacajna turnira (Masters ili GrandSlam)
+10b. Metoda koja vraca ime tenisera koji je osvojio prvi grand slam koji je ikada odrzan.
+10c. Vrati imena tenisera koji su ucestvovali na nekom turniru a mladji su od 18 godina
+
+Drugi deo: Prave se ponovo klase i konstruktori samo sto je sve public i taj deo se ne boduje. 
+1. Prvi zahtev je bio da se za svaku klasu napravi metoda prikazi koja vraca informacije o toj klasi s tim sto je za svaku imalo nesto sto nije ocigledno, tipa ime, prezime i godine starosti pa sad to da se izracuna.
+Mislim da je u jednoj bilo potrebno obraditi gresku za deljenje nulom. 
+2. Drugi zahtev je da se napravi metoda UcitajRezultat ja mislim koja prima vec kreiran objekat tipa teniser. Slicno kao u onim primerima sa sajta. Tu je pod b dato nekoliko jednostavnijih uslova koji treba da se obrade, tipa broj poena na turniru ne sme biti veci od 700. 
+3. Cetvrti zahtev je bio kreiranje objekata u main-u i da se tu iskoristi ona ucitaj metoda iz prethodnog zahteva, drugi deo tog zahteva je bio da se nesto prikaze ali ne secam se sta, tipa svi teniseri koji su bili pobednici ali po turnirima tako nesto. 
+4. I poslednji je bio vezan za delegat, bio je neki malo slozeniji, nisam ga ni citala do kraja.
+
+Ja bih rekla da je delegat bio parametarski i ne static zato sto je bilo dato da se prilikom ucitavanja desava ukoliko je ispunjen neki uslov, pa se ne kaci na njega iz main-a, prosledjuje se vrsta turnira i ako je ucitani turnir znacajan ili sta god, onda se kao salje obavestenje, ali nisam sigurna, neka se javi neko ko ga je uradio 
+Static je, sa parametrom vrsta turnira
+
+Delegat je glasio: dodati u klasu Teniser spisak turnira na kojima je pobedio. pri svakom ucitavanju RezultataTurnira potrebno je vrstu tog turnira ubaciti u listu turnira na kojima je pobedio.
+Ako ta vrsta nije u listi
+
+ Za prvi deo, nije vam toliko bitno kako su glasile tacno metode, jer ce vam sigurno promeniti klase, ali kada budete vezbali, uzmete klase od bilo kog zadatka sa sajta i za njih smisljate sta biste mogli da izvucete i vratite kao informaciju, svaka metoda je vracala listu/int/double/string i vecina je imala ulazni parametar. One za 5p je bio uglavom prolazak kroz jednu for petlju(neku listu), ako su ispunjeni jedan ili vise uslova vraca nesto, za 10p dupla for petlja, moguce if u if-u. I nije bilo dato sve eksplicitno, moraju da se cupaju podaci iz nekih polja, konkretno ovo za zemlju. Tako da obavezno operacije sa stringovima i sa DateTime naucite :) Takodje, osnovne koncepte oo programiranja naucite, nece da gledaju kod ako ne znate neke osnovne stvari, ne pitaju nista specijalno
+
+Delegati
